@@ -22,11 +22,6 @@ jobs:
       - run:
           name: Nightly Build
           command: cargo web build --target=wasm32-unknown-unknown
-      - deployment:
-          production:
-            branch: master
-            commands:
-              - npx surge /Users/mackenzieclark/dev/rustconf-scheduler/target/deploy rustconf_scheduler --domain rustconf-scheduler.surge.sh
 
 #      - run:
 #          name: Stable Build
@@ -46,3 +41,8 @@ jobs:
             - "~/.cargo"
             - "./target"
             - "./target"
+deployment:
+  production:
+    branch: master
+    commands:
+      - npx surge /Users/mackenzieclark/dev/rustconf-scheduler/target/deploy rustconf_scheduler --domain rustconf-scheduler.surge.sh
