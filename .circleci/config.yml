@@ -2,10 +2,14 @@ version: 2
 
 jobs:
   build:
+    working_directory: /mnt/crate
     docker:
       - image: cachednerds/rust-cargo-web:latest
     steps:
       - checkout
+      - persist_to_workspace:
+          root: "."
+
       - restore_cache:
           key: app-cache
 #      - run:
@@ -16,6 +20,11 @@ jobs:
       - run:
           name: Nightly Build
           command: cargo web build --target=wasm32-unknown-unknown
+          command: cargo web deploy --target=wasm32-unknown-unknown
+      - persist_to_workspace:
+          root: "."
+          paths:
+            - Cargo.lock
 #      - run:
 #          name: Stable Build
 #          command: |
@@ -38,6 +47,8 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
+      - attach_workspace:
+          at: "."
       - restore_cache:
           key: app-cache
       - run: npm i
