@@ -6,9 +6,6 @@ jobs:
       - image: cachednerds/rust-cargo-web:latest
     steps:
       - checkout
-      - persist_to_workspace:
-          root: "."
-
       - restore_cache:
           key: app-cache
 #      - run:
