@@ -2,7 +2,6 @@ version: 2
 
 jobs:
   build:
-    working_directory: ~/rusconf-scheduler
     docker:
       - image: cachednerds/rust-cargo-web:latest
     steps:
@@ -32,10 +31,9 @@ jobs:
       - save_cache:
           key: project-cache
           paths:
-            - "~/.cargo"
+#            - "~/.cargo"
             - "./target"
   deploy:
-    working_directory: ~/rusconf-scheduler
     docker:
       - image: circleci/node
     steps:
@@ -44,10 +42,10 @@ jobs:
           key: project-cache
       - run: npm i
       - run: npx surge /Users/mackenzieclark/dev/rustconf-scheduler/target/deploy rustconf_scheduler --domain rustconf-scheduler.surge.sh
-      - save_cache:
-          key: project-cache
-          paths:
-            - "./node_modules"
+#      - save_cache:
+#          key: project-cache
+#          paths:
+#            - "./node_modules"
 workflows:
   version: 2
   build-and-deploy:
