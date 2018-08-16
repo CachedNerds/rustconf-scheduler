@@ -2,7 +2,6 @@ version: 2
 
 jobs:
   build:
-    working_directory: ~/app
     docker:
       - image: cachednerds/rust-cargo-web:latest
     steps:
@@ -43,7 +42,6 @@ jobs:
             - "~/.cargo"
             - "./target"
   deploy:
-    working_directory: ~/app
     docker:
       - image: circleci/node
     steps:
