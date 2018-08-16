@@ -39,7 +39,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: project-cache
+          key: app-cache
       - run: npm i
       - run: npx surge /Users/mackenzieclark/dev/rustconf-scheduler/target/deploy rustconf_scheduler --domain rustconf-scheduler.surge.sh
 #      - save_cache:
