@@ -1,0 +1,8 @@
+{
+  "name": "rustconf-scheduler",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "surge": "^0.20.1"
+  }
+}
