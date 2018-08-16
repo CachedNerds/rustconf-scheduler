@@ -20,7 +20,7 @@ jobs:
       - persist_to_workspace:
           root: "."
           paths:
-            - Cargo.lock
+            - target
 #      - run:
 #          name: Stable Build
 #          command: |
@@ -45,8 +45,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: "."
-      - restore_cache:
-          key: app-cache
+#      - restore_cache:
+#          key: app-cache
       - run: npm i
       - run: npx surge /Users/mackenzieclark/dev/rustconf-scheduler/target/deploy rustconf_scheduler --domain rustconf-scheduler.surge.sh
 #      - save_cache:
