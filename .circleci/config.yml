@@ -34,7 +34,6 @@ jobs:
           paths:
             - "~/.cargo"
             - "./target"
-            - "./target"
   deploy:
     working_directory: ~/rusconf-scheduler
     docker:
