@@ -60,6 +60,17 @@ impl Component for Model {
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            Msg::Select(idx) => {
+
+            }
+            Msg::Deselect(idx) => {
+
+            }
+            Msg::DeselectAll() => {
+
+            }
+        }
 //        match msg {
 //            Msg::Add => {
 //                let entry = Entry {
@@ -116,7 +127,7 @@ impl Renderable<Model> for Model {
             <div class="schedule-table-wrapper",>
                 <table>
                   <tr>
-                    <td>{ "Month" }</td>
+                    <td onclick=|_| { println!("clicked Month"); Msg::DeselectAll() },>{ "Month" }</td>
                     <td>{ "Savings" }</td>
                     <td>{ "Savings for Rust Conf!" }</td>
                   </tr>
