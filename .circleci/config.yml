@@ -41,8 +41,27 @@ jobs:
             - "~/.cargo"
             - "./target"
             - "./target"
-deployment:
-  production:
-    branch: master
-    commands:
-      - npx surge /Users/mackenzieclark/dev/rustconf-scheduler/target/deploy rustconf_scheduler --domain rustconf-scheduler.surge.sh
+  deploy:
+    docker:
+      - image: circleci/node
+      steps:
+        - checkout
+        - restore_cache:
+            key: project-cache
+        - run: npm i
+        - run: npx surge /Users/mackenzieclark/dev/rustconf-scheduler/target/deploy rustconf_scheduler --domain rustconf-scheduler.surge.sh
+        - save_cache:
+            key: project-cache
+          paths:
+            - "./node_modules"
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
