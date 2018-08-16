@@ -118,7 +118,7 @@ impl Renderable<Model> for Model {
                   <tr>
                     <td>{ "Month" }</td>
                     <td>{ "Savings" }</td>
-                    <td>{ "Savings for holiday!" }</td>
+                    <td>{ "Savings for Rust Conf!" }</td>
                   </tr>
                   <tr>
                     <td>{ "January" }</td>
