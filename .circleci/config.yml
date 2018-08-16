@@ -2,6 +2,7 @@ version: 2
 
 jobs:
   build:
+    working_directory: ~/rusconf-scheduler
     docker:
       - image: cachednerds/rust-cargo-web:latest
     steps:
@@ -35,6 +36,7 @@ jobs:
             - "./target"
             - "./target"
   deploy:
+    working_directory: ~/rusconf-scheduler
     docker:
       - image: circleci/node
     steps:
