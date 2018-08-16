@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: project-cache
+          key: app-cache
 #      - run:
 #          name: Check formatting
 #          command: |
@@ -29,9 +29,9 @@ jobs:
 #          name: Upload Coverage
 #          command: ./scripts/codecov.sh
       - save_cache:
-          key: project-cache
+          key: app-cache
           paths:
-#            - "~/.cargo"
+            - "~/.cargo"
             - "./target"
   deploy:
     docker:
